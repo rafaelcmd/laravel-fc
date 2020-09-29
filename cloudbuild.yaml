@@ -20,6 +20,10 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec','-t','app','php','/var/www/artisan','key:generate']
 
+  - id: "Limpando configurações do banco"
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['exec','-t','app','php','/var/www/artisan','config:clear']
+
   - id: "Rodando migrations"
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec','-t','app','php','/var/www/artisan','migrate']
